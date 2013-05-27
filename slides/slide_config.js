@@ -1,7 +1,7 @@
 var SLIDE_CONFIG = {
   // Slide settings
   settings: {
-    title: '<span style="font-size:80px">WTFM!&nbsp;</span><br/><span style="font-size:50px">Write The Friendly Manual&nbsp;<br/> with Mylyn Intent&nbsp;</span>',
+    title: '<span style="font-size:80px">WTFM!&nbsp;</span><br/><span style="font-size:50px">Write The Friendly Manual with Mylyn Intent&nbsp;</span>',
     useBuilds: true, // Default: true. False will turn off slide animation builds.
     usePrettify: true, // Default: true
     enableSlideAreas: true, // Default: true. False turns off the click areas on either slide of the slides.
