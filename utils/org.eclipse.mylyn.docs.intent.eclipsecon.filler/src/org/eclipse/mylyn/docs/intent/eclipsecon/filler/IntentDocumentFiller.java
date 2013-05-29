@@ -15,6 +15,9 @@ import java.util.Map;
 
 import org.eclipse.jface.text.DocumentEvent;
 import org.eclipse.jface.text.IDocumentListener;
+import org.eclipse.mylyn.docs.intent.client.ui.editor.IntentEditor;
+import org.eclipse.mylyn.docs.intent.client.ui.editor.IntentEditorDocument;
+import org.eclipse.swt.widgets.Display;
 
 public class IntentDocumentFiller implements IDocumentListener {
 
@@ -40,18 +43,29 @@ public class IntentDocumentFiller implements IDocumentListener {
 	 * @see org.eclipse.jface.text.IDocumentListener#documentChanged(org.eclipse.jface.text.DocumentEvent)
 	 */
 	@Override
-	public void documentChanged(DocumentEvent event) {
+	public void documentChanged(final DocumentEvent event) {
+		final String newText = event.getText();
 		if (isReadyToChange) {
-			String textID = event.getText();
+			final IntentEditorDocument intentDocument = ((IntentEditorDocument)event.fDocument);
 			isReadyToChange = false;
-			String replacement = getText(textID);
-			if (replacement == null) {
-				replacement = FILL_REQUEST_IDENTIFIER + textID;
+			final String replacement = getText(newText);
+			if (replacement != null) {
+				Display.getDefault().asyncExec(new Runnable() {
+					@Override
+					public void run() {
+						intentDocument.set(intentDocument.get().replace(FILL_REQUEST_IDENTIFIER + newText,
+								replacement));
+						IntentEditor intentEditor = ((IntentEditor)intentDocument.getIntentEditor());
+						intentEditor
+								.getProjectionViewer()
+								.getTextWidget()
+								.setCaretOffset(
+										intentDocument.get().indexOf(replacement) + replacement.length());
+					}
+				});
 			}
-
-			event.fDocument.set(event.fDocument.get().replace(FILL_REQUEST_IDENTIFIER + textID, replacement));
 		} else {
-			if (FILL_REQUEST_IDENTIFIER.equals(event.getText())) {
+			if (FILL_REQUEST_IDENTIFIER.equals(newText)) {
 				isReadyToChange = true;
 			} else {
 				isReadyToChange = false;
