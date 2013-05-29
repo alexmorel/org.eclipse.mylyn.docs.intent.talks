@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.mylyn.docs.intent.client.ui.quickfixprovider">
+      <IntentQuickFixProvider
+            class="org.eclipse.mylyn.docs.intent.eclipsecon.filler.IntentQuickFixProvider1">
+      </IntentQuickFixProvider>
+   </extension>
+
+</plugin>
