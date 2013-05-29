@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Catalog
+Bundle-SymbolicName: com.example.offer.catalog
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.example.offer.catalog.Activator
+Bundle-Vendor: EXAMPLE
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Export-Package: com.example.offer.catalog,
+ com.example.offer.catalog.api,
+ com.example.offer.catalog.categories,
+ com.example.offer.catalog.offertypes

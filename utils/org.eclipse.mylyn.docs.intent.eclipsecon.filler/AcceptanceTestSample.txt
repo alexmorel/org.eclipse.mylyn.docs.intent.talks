@@ -1,0 +1,18 @@
+package com.example.offer.test.acceptance.scenarios;
+
+import com.example.offer.test.acceptance.utils.AbstractOfferAcceptanceTest;
+import com.example.offer.test.acceptance.utils.ICategoryPage;
+
+public class Scenario01AcceptanceTest extends AbstractOfferAcceptanceTest {
+
+	public void testScenario01() {
+		login("testUser", "testUserPassword");
+		ICategoryPage categoryPage = openCategoryPage();
+		assertFalse("There should be at least one offer displayed in the page", categoryPage.getAvailableOffers().isEmpty());
+		
+		String categoryName = "Books";
+		assertTrue("It should be possible to select the '"+ categoryName + "' category", categoryPage.selectCategory(categoryName));
+		assertFalse("There should be at least one offer displayed in the page", categoryPage.getAvailableOffers().isEmpty());
+		logout();
+	}
+}
