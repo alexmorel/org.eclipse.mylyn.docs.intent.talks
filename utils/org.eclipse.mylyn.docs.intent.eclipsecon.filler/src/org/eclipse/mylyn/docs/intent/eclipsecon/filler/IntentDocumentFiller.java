@@ -76,7 +76,18 @@ public class IntentDocumentFiller implements IDocumentListener {
 	private String getText(String textID) {
 		if (textIDToText == null) {
 			textIDToText = new LinkedHashMap<String, String>();
-			textIDToText.put("1", "some *text* with @Styling@");
+			textIDToText.put("1", "Scenario S-01: filter offers according to a Category");
+			textIDToText
+					.put("2",
+							"*As a* end-user\n\t\t*I want to* be able to _filter_ offers according to their associated @Category@\n\t\t*Given* A set of offers\n\t\t*When* I select the category entitled \"Books\" in the _Category page_\n\t\t*Then* I should only see the offers associated to this category");
+			textIDToText.put("3", "!file:///D:\\Intent_logo.png!");
+			textIDToText
+					.put("4",
+							"* some item\n\t\t* some other item\n\n\t\t# numeric lists are handled too\n\t\t# yes indeed.");
+			textIDToText
+					.put("5",
+							"All scenarios described here have a corresponding Acceptance test referenced by the Offer Acceptance TestSuite.\n\t\t@M\n\t\t\t@ref \"com.example.offer.test.acceptance/src/com/example/offer/test/acceptance/suite/OfferAcceptanceTestSuite.java#/\"\n\t\t\t \n\t\tM@");
+
 		}
 		return textIDToText.get(textID);
 	}

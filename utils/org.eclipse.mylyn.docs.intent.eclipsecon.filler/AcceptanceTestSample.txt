@@ -6,13 +6,20 @@ import com.example.offer.test.acceptance.utils.ICategoryPage;
 public class Scenario01AcceptanceTest extends AbstractOfferAcceptanceTest {
 
 	public void testScenario01() {
+		// Step 1: login
 		login("testUser", "testUserPassword");
+		
+		// Step 2: user open category page and see all availables offers
 		ICategoryPage categoryPage = openCategoryPage();
 		assertFalse("There should be at least one offer displayed in the page", categoryPage.getAvailableOffers().isEmpty());
 		
+		// Step 3: user selects a specific category
 		String categoryName = "Books";
 		assertTrue("It should be possible to select the '"+ categoryName + "' category", categoryPage.selectCategory(categoryName));
+		// => offers should be filtered accorting to this category
 		assertFalse("There should be at least one offer displayed in the page", categoryPage.getAvailableOffers().isEmpty());
+		
+		// Step 4: logout
 		logout();
 	}
 }

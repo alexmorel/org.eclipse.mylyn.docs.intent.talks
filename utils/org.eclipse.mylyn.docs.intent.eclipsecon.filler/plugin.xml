@@ -4,7 +4,7 @@
    <extension
          point="org.eclipse.mylyn.docs.intent.client.ui.quickfixprovider">
       <IntentQuickFixProvider
-            class="org.eclipse.mylyn.docs.intent.eclipsecon.filler.IntentQuickFixProvider1">
+            class="org.eclipse.mylyn.docs.intent.eclipsecon.validation.OfferQuickFixProvider">
       </IntentQuickFixProvider>
    </extension>
 
