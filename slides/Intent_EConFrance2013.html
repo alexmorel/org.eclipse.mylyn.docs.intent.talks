@@ -206,21 +206,22 @@ URL: https://code.google.com/p/io-2012-slides
 			<b class="kw">Chapter</b> <b>Significant Scenarios</b> {
 				<div class="intent_subsectioncontainer">
 				<div class="du"><br/>
-					This chapter specifies the behavior of the <b>*my.plugin*</b> plugin by listing relevant scenarios.<br/> These scenarios can involve both
-					human actors or computer/system actors, as defined in chapter 1.5.
+					This chapter specifies the behavior of the <b>*com.example.offer*</b> platform by listing relevant scenarios.<br/>
+					These scenarios can involve both human actors or computer/system actors, as defined in chapter 1.5.
 				</div>
-					<br/><b class="kw">Section</b> <b>Scenario S-01: get source of a Java method</b> {
+					<br/><b class="kw">Section</b> <b>Scenario S-01: filter offers according to a Category</b> {
 						<div class="intent_subsectioncontainer">
 								<div class="du"><br/>
 										<b>*As a*</b> end-user<br/>
-										<b>*Given*</b> a <i>_Java class_</i> containing a non-abstract method<br/>
-										<b>*Then*</b> when getting the model representation of this Java Class<br/>
-									the source of each method should be the exact source of the java method<br/><br/>
+										<b>*I want to*</b> be able to <i>_filter_</i> offers according to their associated Category<br/>
+										<b>*Given*</b> A set of offers<br/>
+										<b>*When*</b> I select the category entitled <i style="color:blue">"Books"</i> in the Category Page<br/>
+										<b>*Then</b> I should only see the offers associated to this category
 								</div>
 								<div class="intent_modelingunit">
 								<b class="kw">@M</b><br/>
 								<div class="intent_subsectioncontainer">
-								<b class="kw">@ref</b><i style="color:blue"> "org.eclipse.my.plugin.tests/src/org/eclipse/my/plugin/tests/GetJavaMethodSourceTest.java"</i>
+								<b class="kw">@ref</b><span style="color:blue"> "com.example.offer.test/src/com/example/offer/test/Scenario01Test.java"</span>
 									<br/>
 								</div>
 								<b class="kw">M@</b>
@@ -250,22 +251,24 @@ URL: https://code.google.com/p/io-2012-slides
 			<b class="kw">Chapter</b> <b>Significant Scenarios</b> {
 				<div class="intent_subsectioncontainer">
 				<div class="du"><br/>
-					This chapter specifies the behavior of the <b>*my.plugin*</b> plugin by listing relevant scenarios.<br/> These scenarios can involve both
-					human actors or computer/system actors, as defined in chapter 1.5.
+					This chapter specifies the behavior of the <b>*com.example.offer*</b> platform by listing relevant scenarios.<br/>
+					These scenarios can involve both human actors or computer/system actors, as defined in chapter 1.5.
 				</div>
-					<br/><b class="kw">Section</b> <b>Scenario S-01: get source of a Java method</b> {
+					<br/><b class="kw">Section</b> <b>Scenario S-01: filter offers according to a Category</b> {
 						<div class="intent_subsectioncontainer">
 								<div class="du"><br/>
 										<b>*As a*</b> end-user<br/>
-										<b>*Given*</b> a <i>_Java class_</i> containing a non-abstract method<br/>
-										<b>*Then*</b> when getting the model representation of this Java Class<br/>
-									the source of each method should be the exact source of the java method<br/><br/>
+										<b>*I want to*</b> be able to <i>_filter_</i> offers according to their associated Category<br/>
+										<b>*Given*</b> A set of offers<br/>
+										<b>*When*</b> I select the category entitled <i style="color:blue">"Books"</i> in the Category Page<br/>
+										<b>*Then</b> I should only see the offers associated to this category
+										<br/><br/>
 								</div>
 								<div class="greyed">
 								<div class="intent_modelingunit" style="background-color:#F8F8F8;color:grey;font-size: 14px;">
 								@M<br/>
 								<div class="intent_subsectioncontainer">
-								@ref "org.eclipse.my.plugin.tests/src/org/eclipse/my/plugin/tests/GetJavaMethodSourceTest.java"
+								@ref "com.example.offer.test/src/com/example/offer/test/Scenario01Test.java"
 									</div>
 								M@
 								</div>
@@ -295,22 +298,23 @@ URL: https://code.google.com/p/io-2012-slides
 			Chapter Significant Scenarios {
 				<div class="intent_subsectioncontainer">
 				<div class="du">
-					This chapter specifies the behavior of the *my.plugin* plugin by listing relevant scenarios.<br/>
-					These scenarios can involve both
-					human actors or computer/system actors, as defined in chapter 1.5.
+					This chapter specifies the behavior of the *com.example.offer* platform by listing relevant scenarios.<br/>
+					These scenarios can involve both human actors or computer/system actors, as defined in chapter 1.5.
 				</div>
-					<br/>SectionComputer Actors{
+					<br/>Section Scenario S-01: filter offers according to a Category {
 						<div class="intent_subsectioncontainer">
 								<div class="du">
 										*As a* end-user<br/>
-										*Given* a _Java class_ containing a non-abstract method<br/>
-										*Then* when getting the model representation of this Java Class<br/>
-									the source of each method should be the exact source of the java method<br/><br/>
+										*I want to* be able to _filter_ offers according to their associated Category<br/>
+										*Given* A set of offers<br/>
+										*When* I select the category entitled "Books" in the Category Page<br/>
+										*Then I should only see the offers associated to this category
 								</div>
 								<div class="intent_modelingunit">
 								<b class="kw">@M</b><br/>
 								<div class="intent_subsectioncontainer">
-								<b class="kw">@ref</b><i style="color:blue"> "org.eclipse.my.plugin.tests/src/org/eclipse/my/plugin/tests/GetJavaMethodSourceTest.java"</i>
+								<b class="kw">@ref</b> <span style="color:blue"> 
+								"com.example.offer.test/src/com/example/offer/test/Scenario01Test.java"</span>
 									<br/>
 								</div>
 								<b class="kw">M@</b>
@@ -327,7 +331,27 @@ URL: https://code.google.com/p/io-2012-slides
 	  <h2 style="left:550px;top:0px;">3. Intent in Action <span style="font-size:0px;">_</span></h2>
 	  <aside style="width:460px;top:35px;" class="gdbar right" ></aside>
   </slide>
-  
+   <slide class="part3">
+		<h2>Demo context</h2>
+		<hr/>
+		<h3> Scenario</h3>
+		<ul style="padding-left:50px">
+			<li>Developping a <b>Web portal</b> called Offers.com</li>
+			<li>Purchase items online</li>
+			<li>Items ordered by Categories</li>
+			<li>BDD (<b>Behavior Driven Development</b>) approach</li>
+		</ul>
+		
+		<h3> Environment</h3>
+		<ul style="padding-left:50px">
+			<li> Standard Eclipse (Kepler RC2)</li>	
+			<li> With Mylyn Intent 0.8 installed</a></li>
+			<li> And nothing more... Except:</li>
+				<ul><li> A "filler" (because I'm lazy)</li> </ul>
+				<ul><li> A plugin customizing Intent behavior (but more on that later)</li></ul>
+			</li>
+		</ul>
+  </slide>
  
   <slide class="part3" style="background: url(images/Intent/sync01.png); background-size: 90%;background-position:30px 0px;background-color:white; background-repeat : no-repeat;">
   <div class="paddinger" style="position:relative;top:230px;left:170px;text-align:center;width:250px">
@@ -405,15 +429,10 @@ URL: https://code.google.com/p/io-2012-slides
 		<b>Automate</b> high-level constraints checking
 	  </h2><hr/>
 	 <article class="noBullets">
-	 	<div style="padding-top:20px">
-			<h3 style="color:black">Plug constraints in Intent</h3>
+	 	<div style="padding-top:40px">
+			<img src="images/Intent/automate.jpg" style="float:left;padding-right:5px" /><br/><h3 style="color:black">Plug constraints in Intent</h3>
 			<p style="padding-left:15px">Problem view integration, extensible quick-fixes</p>
-		</div>
-			<!--style="padding-left: 520px; padding-top:10px;"--> 
-			<div style="padding-top:30px;">
-			<img src="images/Intent/validation.png" style="" /><br/>
-			
-			<div>
+		</div>			
 		</article>
     </hgroup>
   </slide>
@@ -490,6 +509,7 @@ URL: https://code.google.com/p/io-2012-slides
 	  <br/>2. Intent allows you <b>formalize</b> your dev <b>constraints</b><br/><br/>
 	  <br/>3. Intent allows <b>real-time collaboration</b> around Doc<br/>
 	   </article>
+	   DEMO WAS AN EXAMPLE
     </hgroup>
   </slide>
      <slide class="needyou">
