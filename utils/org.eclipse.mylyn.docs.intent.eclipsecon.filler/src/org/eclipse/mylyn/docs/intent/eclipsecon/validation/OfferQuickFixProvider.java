@@ -62,7 +62,7 @@ public class OfferQuickFixProvider implements IntentQuickFixProvider {
 
 			@Override
 			public String getDisplayString() {
-				return "Rename test to 'testScenario1'";
+				return "Rename test method to 'testScenario1()'";
 			}
 
 			@Override

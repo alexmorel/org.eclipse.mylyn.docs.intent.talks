@@ -40,7 +40,7 @@ public class CustomOffersValidator implements EValidator {
 						diagnostics.add(new BasicDiagnostic(Diagnostic.ERROR,
 								"org.eclipse.mylyn.docs.intent.eclipsecon.filler", 0, "The Acceptance Test '"
 										+ classifier.getName().substring(
-												classifier.getName().lastIndexOf("."))
+												classifier.getName().lastIndexOf(".") + 1)
 										+ "' contains an uncorrectly named method ('"
 										+ method.getSimpleName()
 										+ "') : should be of the form 'testScenario SCENARIO_ID'.", null));
