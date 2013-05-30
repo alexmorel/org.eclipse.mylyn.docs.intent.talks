@@ -3,6 +3,7 @@ b {
 }
 article {
 	color:#515151;
+	font-size:115%;
 }
 
 .stroke {
@@ -43,7 +44,7 @@ z-index:54;
  padding-right:20px;
 }
 .paddinger p {
-font-size:24px;
+font-size:80%;
 }
   
 .intent_content {
