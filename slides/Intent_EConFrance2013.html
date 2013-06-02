@@ -61,12 +61,13 @@ URL: https://code.google.com/p/io-2012-slides
 			<li><b>customizable</b> for your development processes</li>
 		</ul>
     </article>
-	<article class="build rightaligned" style="padding-top:150px">
+	<article class="build rightaligned" style="padding-top:100px;padding-right:20px;">
       <ul>
-        <img style="float:left;position:absolute;left:500px" src="images/Intent/egg-incubation.png"/>
-		<li>Parf of <b>Mylyn</b> docs</li>
-		<li>In incubation phase</li>		
-	    <li>Parf of Release train since Juno </li>
+        <img style="float:left;position:absolute;left:580px" src="images/Intent/egg-incubation.png"/>
+		<br/><span style="padding-top:10px">Parf of <b>Mylyn</b> docs<br/><br/>
+		In incubation phase<br/><br/></span>
+		<div style="clear:both"/>
+	    Parf of Release train since Juno<br/>
 	  </ul>
     </article>
   </slide>
@@ -291,7 +292,7 @@ URL: https://code.google.com/p/io-2012-slides
 		<p style="padding-left:50px;padding-top:50px;color:black">
 			<span style="">- Formal links zones<br/>
 				<span style="padding-left:30px;">Reference to technical artifacts (Java, models, Manifests...)<br/></span>
-				<span style="padding-left:30px;">Extensible behavior (display, hyperlinks, validation...)<br/><br/></span>
+				<span style="padding-left:30px;">Extensible behavior (display, hyperlinks, export, validation...)<br/><br/></span>
 			</span>
 		</p>
 		<div class="intent_content greyed">
@@ -334,21 +335,19 @@ URL: https://code.google.com/p/io-2012-slides
    <slide class="part3">
 		<h2>Demo context</h2>
 		<hr/>
-		<h3> Scenario</h3>
+		<h3 style="color:#515151"> Scenario</h3>
 		<ul style="padding-left:50px">
 			<li>Developping a <b>Web portal</b> called Offers.com</li>
-			<li>Purchase items online</li>
-			<li>Items ordered by Categories</li>
+			<li>Purchase items sorted by categories</li>
 			<li>BDD (<b>Behavior Driven Development</b>) approach</li>
 		</ul>
 		
-		<h3> Environment</h3>
+		<h3 style="color:#515151"> Environment</h3>
 		<ul style="padding-left:50px">
-			<li> Standard Eclipse (Kepler RC2)</li>	
-			<li> With Mylyn Intent 0.8 installed</a></li>
+			<li> Eclipse (Kepler RC2) + Mylyn Intent 0.8 installed</a></li>
 			<li> And nothing more... Except:</li>
-				<ul><li> A "filler" (because I'm lazy)</li> </ul>
-				<ul><li> A plugin customizing Intent behavior (but more on that later)</li></ul>
+				<ul><li> A "magic filler" (because I'm lazy)</li>
+				<li> A plugin customizing Intent behavior (but more on that later)</li></ul>
 			</li>
 		</ul>
   </slide>
@@ -431,7 +430,7 @@ URL: https://code.google.com/p/io-2012-slides
 	 <article class="">
 	 	<div style="padding-top:40px">
 			<img src="images/Intent/automate.jpg" style="float:left;padding-right:5px" /><br/>
-			<h3 style="font-size:120%;color:black">Plug constraints in Intent</h3>
+			<h3 style="font-size:120%;color:black">Plug <b>custom</b> constraints in Intent</h3>
 			<h4 style="padding-left:40px">
 				<b style="padding-right:50px"></b>- Live & formal validation<br/>
 				<b style="padding-right:50px"></b>- Problem view integration<br/>
@@ -441,7 +440,7 @@ URL: https://code.google.com/p/io-2012-slides
 		</article>
     </hgroup>
   </slide>
-    <slide class="segue nobackground partTitle" style="background: url(images/Intent/cooking.jpg); background-size: 100%;">
+    <slide class="segue nobackground partTitle" style="background: url(images/Intent/cooking.jpg);background-color:black;background-size: 100%;">
 	  <h2 style="top:550px;left:100px;";>5. What's cooking? <span style="font-size:0px;">_</span></h2>
 	  <aside style="width:920px;top:585px;" class="gdbar" ></aside>
   </slide>
@@ -466,8 +465,8 @@ URL: https://code.google.com/p/io-2012-slides
 		Intent: what's Cooking?
 	  </h2><hr/>
 	  <article style="padding-top:10px;padding-left:120px;">
-	  <img  src="images/Intent/web_export.png" style="width:80%;"/><br/>
-	    - HTML Bootstrap export (focused on navigation)<br/><br/>
+	  <img  src="images/Intent/web_export.png" style="width:75%;"/><br/>
+	    - HTML Bootstrap / Latex / PDF export<br/><br/>
 		- new Bridges (Manifest.MF, plugin.xml, Xtext...)<br/><br/>		
 		- Performances & Stability<br/>
 	   </article>
@@ -478,20 +477,21 @@ URL: https://code.google.com/p/io-2012-slides
 	<slide class="cooking">
       <h2 style="maring-top:-150px;">
 		And in the future?
-	  </h2><hr/>	 
+	  </h2><hr/>
+<article>	  
 	  <br/><br/>
-	  <span style="padding-top:10px;margin-left:0px;color:black">
 
 		<b>Mylyn 4.0</b> will store tasks, bugzillas, git repos... <b>as models</b><br/><br/>
 <br/>
 		Imagine what Intent could do!<br/><br/><br/>
 			  <img src="images/Intent/future.jpg" style="float:left;width:30%;padding-right:15px"/>
-		<i>Alice is writing a contribution guide showing the git repo URL</i><br/>
-		&rarr; And if URL changes, sync. issues will be raised<br/><br/><br/>
-		<i>John is closing a bugzilla issue without writing Junit test</i><br/>
-		&rarr; Intent will raise a validation issue as team defined custom rule
-		
-	   </span>
+		<span style="font-size:90%">
+			<i>Alice is writing a contribution guide showing the git repo URL</i><br/>
+			&rarr; And if URL changes, sync. issues will be raised<br/><br/><br/>
+			<i>John is closing a bugzilla issue without writing Junit test</i><br/>
+			&rarr; Intent will raise a validation issue as team defined custom rule
+		</span>
+	   </article>
   </slide>
   
     <slide class="three_things">
@@ -514,9 +514,7 @@ URL: https://code.google.com/p/io-2012-slides
 	  <article style="padding-top:100px;padding-right:30px;text-align:center">
 	  <br/>1. Intent keeps your <b>doc up-to-date</b> with concrete world<br/><br/>
 	  <br/>2. Intent allows you <b>formalize</b> your dev <b>constraints</b><br/><br/>
-	  <br/><b style="font-size:60px;">
-	  3. DEMO WAS JUST AN EXAMPLE!
-	  </b>
+	  <br/><b style="font-size:60px;"> 3. DEMO WAS JUST AN EXAMPLE </b>
 	   </article>
 	   
     </hgroup>
