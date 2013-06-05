@@ -14,6 +14,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaElement;
 import org.eclipse.jdt.core.IMethod;
@@ -28,6 +29,10 @@ import org.eclipse.mylyn.docs.intent.client.ui.logger.IntentUiLogger;
 import org.eclipse.mylyn.docs.intent.collab.handlers.adapters.IntentCommand;
 import org.eclipse.mylyn.docs.intent.collab.handlers.adapters.RepositoryAdapter;
 import org.eclipse.mylyn.docs.intent.core.modelingunit.ExternalContentReference;
+import org.eclipse.ui.IEditorDescriptor;
+import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.part.FileEditorInput;
 
 public class OfferQuickFixProvider implements IntentQuickFixProvider {
 
@@ -89,6 +94,20 @@ public class OfferQuickFixProvider implements IntentQuickFixProvider {
 
 				});
 				document.set(document.get() + " ");
+				// Step 1: open editor
+				URI javaElementURI = URI.createURI(externalContentRef.getUri().trimFragment().toString()
+						.trim());
+				FileEditorInput editorInput = new FileEditorInput(file);
+				IEditorDescriptor desc = PlatformUI.getWorkbench().getEditorRegistry()
+						.getDefaultEditor(javaElementURI.trimFragment().lastSegment());
+				if (desc != null) {
+					try {
+						PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
+								.openEditor(editorInput, desc.getId());
+					} catch (PartInitException e) {
+						IntentUiLogger.logError(e);
+					}
+				}
 
 			}
 		};

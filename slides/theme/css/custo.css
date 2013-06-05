@@ -148,12 +148,12 @@ slides > slide.part2:before {
 }
 
 slides > slide.part3:before {
-  background: url(../../images/Intent/ariadne.png) no-repeat 0 50%;
+  background: url(../../images/Intent/Image-Intent_logo_cropped.png) no-repeat 0 50%;
     -webkit-background-size: 30px 30px;
   -moz-background-size: 30px 30px;
   -o-background-size: 30px 30px;
   background-size: 30px 30px;
-  content: "3. To code synchronization and Beyond";
+  content: "3. Intent in Action";
 }
 slides > slide.part4:before {
   background: url(../../images/Intent/Image-Intent_logo_cropped.png) no-repeat 0 50%;
