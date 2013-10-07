@@ -76,18 +76,19 @@ public class IntentDocumentFiller implements IDocumentListener {
 	private String getText(String textID) {
 		if (textIDToText == null) {
 			textIDToText = new LinkedHashMap<String, String>();
-			textIDToText.put("1", "Scenario S-01: filter offers according to a Category");
+			textIDToText
+					.put("1",
+							"In the main graphical area, the user can *drag graphical elements* an drop them inside new containers.");
 			textIDToText
 					.put("2",
-							"*As a* end-user\n\t\t*I want to* be able to _filter_ offers according to their associated @Category@\n\t\t*Given* A set of offers\n\t\t*When* I select the category entitled \"Books\" in the _Category page_\n\t\t*Then* I should only see the offers associated to this category");
-			textIDToText.put("3", "!file:///D:\\Intent_logo.png!");
+							"Story: Drag graphical elements and drop them inside new containers [Editor Drag and Drop]");
+			textIDToText
+					.put("3",
+							"Drag and drop an Attribute in another Class [Drag graphical elements and drop them inside new containers]@ui\n\t\t\tGiven: A class diagram editor is opened\n\t\t\tWhen: draging an Attribute and dropping it inside another Class\n\t\t\tThen: Attribute should be contained in the drop target");
+
 			textIDToText
 					.put("4",
-							"* some item\n\t\t* some other item\n\n\t\t# numeric lists are handled too\n\t\t# yes indeed.");
-			textIDToText
-					.put("5",
-							"All scenarios described here have a corresponding Acceptance test referenced by the Offer Acceptance TestSuite.\n\t\t@M\n\t\t\t@ref \"com.example.offer.test.acceptance/src/com/example/offer/test/acceptance/suite/OfferAcceptanceTestSuite.java#/\"\n\t\t\t \n\t\tM@");
-
+							"To support such drang-and-drop capabilities, we defined a new *Drag and Drop* tool in the *Viewpoint Specification Model*.\n\t\t\tIt allows to drop _Attributes_ from one _Class_ to another.");
 		}
 		return textIDToText.get(textID);
 	}

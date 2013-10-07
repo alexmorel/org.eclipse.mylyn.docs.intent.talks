@@ -10,8 +10,6 @@
  *******************************************************************************/
 package org.eclipse.mylyn.docs.intent.eclipsecon.validation;
 
-import java.util.Iterator;
-
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
@@ -26,9 +24,7 @@ import org.eclipse.jdt.core.JavaModelException;
 import org.eclipse.jface.text.ITextSelection;
 import org.eclipse.jface.text.TextSelection;
 import org.eclipse.mylyn.docs.intent.bridge.java.Classifier;
-import org.eclipse.mylyn.docs.intent.bridge.java.Field;
 import org.eclipse.mylyn.docs.intent.bridge.java.Method;
-import org.eclipse.mylyn.docs.intent.bridge.java.resource.factory.JavaResourceFactory;
 import org.eclipse.mylyn.docs.intent.client.ui.editor.IntentEditorDocument;
 import org.eclipse.mylyn.docs.intent.client.ui.editor.annotation.IntentAnnotation;
 import org.eclipse.mylyn.docs.intent.client.ui.editor.quickfix.AbstractIntentFix;
@@ -72,22 +68,14 @@ public class TestNotImplementedQuickFixProvider implements IntentQuickFixProvide
 	 */
 	@Override
 	public AbstractIntentFix createQuickFix(IntentAnnotation annotation) {
-		final ExternalContentReference externalContentRef = (ExternalContentReference)annotation
-				.getCompilationStatus().getTarget();
-		Method method = null;
-		if (externalContentRef.getExternalContent() instanceof Classifier) {
-			Iterator<Method> methodsIterator = ((Classifier)externalContentRef.getExternalContent())
-					.getMethods().iterator();
-			while (method == null && methodsIterator.hasNext()) {
-				Method next = methodsIterator.next();
-				if (next.getContent().split("\n").length < 2) {
-					method = next;
-				}
-			}
-		} else if (externalContentRef.getExternalContent() instanceof Method) {
-			method = (Method)externalContentRef.getExternalContent();
-		}
-		final String methodName = method.getName();
+		String compilationIssueMessage = annotation.getCompilationStatus().getMessage();
+		String className = compilationIssueMessage.substring(
+				compilationIssueMessage.lastIndexOf("Context method ")).replace("Context method", "");
+		final String methodName = className.substring(className.lastIndexOf(".java") + 6,
+				className.lastIndexOf(" is not implemented")).trim();
+		className = className.substring(0, className.lastIndexOf(".java")) + ".java".trim();
+		final URI methodURI = URI.createURI(className);
+
 		return new AbstractIntentFix(annotation) {
 
 			/**
@@ -102,12 +90,12 @@ public class TestNotImplementedQuickFixProvider implements IntentQuickFixProvide
 
 			@Override
 			public String getDisplayString() {
-				return "Implement test method " + methodName;
+				return "Implement test method " + methodName + " in " + methodURI.toString();
 			}
 
 			@Override
 			protected void applyFix(RepositoryAdapter repositoryAdapter, IntentEditorDocument document) {
-				URI javaElementURI = URI.createURI(externalContentRef.getUri().toString().trim());
+				URI javaElementURI = URI.createURI(methodURI.toString().trim());
 				IFile javaFile = ResourcesPlugin.getWorkspace().getRoot()
 						.getFile(new Path(javaElementURI.trimFragment().toString()));
 				FileEditorInput editorInput = new FileEditorInput(javaFile);
@@ -124,8 +112,8 @@ public class TestNotImplementedQuickFixProvider implements IntentQuickFixProvide
 				}
 
 				// Step 2: select element described by URI (if any)
-				if (openedEditor != null && javaElementURI.hasFragment()) {
-					updateOpenedEditorSelection(openedEditor, javaFile, javaElementURI);
+				if (openedEditor != null) {
+					updateOpenedEditorSelection(openedEditor, javaFile, methodName);
 				}
 
 			}
@@ -139,27 +127,20 @@ public class TestNotImplementedQuickFixProvider implements IntentQuickFixProvide
 	 *            the editor to update
 	 * @param javaFile
 	 *            the java file
-	 * @param javaElementURI
-	 *            the {@link URI} of the element to select
+	 * @param methodName
+	 *            the name of the method to select
 	 */
-	private void updateOpenedEditorSelection(IEditorPart openedEditor, IFile javaFile, URI javaElementURI) {
-		EObject eJavaElement = new JavaResourceFactory().createResource(javaElementURI.trimFragment())
-				.getEObject(javaElementURI.fragment());
+	private void updateOpenedEditorSelection(IEditorPart openedEditor, IFile javaFile, String methodName) {
 		try {
 			IType javaType = ((ICompilationUnit)JavaCore.create(javaFile)).getTypes()[0];
 
 			ISourceReference matchingElement = null;
-			if (eJavaElement instanceof Classifier) {
-				matchingElement = javaType;
-			} else if (eJavaElement instanceof Method) {
-				for (IMethod method : javaType.getMethods()) {
-					if (method.getElementName().equals(((Method)eJavaElement).getSimpleName())) {
-						// Todo consider parameters
-						matchingElement = method;
-					}
+
+			for (IMethod method : javaType.getMethods()) {
+				if (methodName.replace("()", "").equals(method.getElementName())) {
+					// Todo consider parameters
+					matchingElement = method;
 				}
-			} else if (eJavaElement instanceof Field) {
-				matchingElement = javaType.getField(((Field)eJavaElement).getName());
 			}
 			if (matchingElement != null) {
 				ITextSelection textSelection = new TextSelection(
